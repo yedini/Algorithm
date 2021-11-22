@@ -1,43 +1,11 @@
+from collections import deque
 N, M = map(int, input().split())
 
 graph = []
 for i in range(N):
     graph.append(list(input()))
 
-count = 0
-def dfs(x,y):
-    global count
-    ## 종료조건
-    # 범위를 벗어나거나 벽인 경우
-    if x >= N or x <= -1 or y >=M or y<= -1 or graph[x][y]=="X":
-        return False
-
-    # 아직 방문하지 않은 경우
-    if graph[x][y] == "O":
-        graph[x][y] = 1
-        
-        # 재귀적 호출
-        dfs(x-1, y)
-        dfs(x+1, y)
-        dfs(x, y-1)
-        dfs(x, y+1)
-        
-        return True
-
-    # 친구가 있는 경우
-    if graph[x][y] == "P":
-        graph[x][y] = 1
-        count += 1
-    # 재귀적 호출
-        dfs(x-1, y)
-        dfs(x+1, y)
-        dfs(x, y-1)
-        dfs(x, y+1)
-        
-        return True
-
-    return False
-
+# starting point
 for i in range(N):
     for j in range(M):
         if graph[i][j] == "I":
@@ -45,9 +13,41 @@ for i in range(N):
             x = i
             y = j
             break
-            
-            
-dfs(x,y)
-if count == 0:
-    count = "TT"
-print(count)
+
+# 이동 방향(상 하 좌 우)
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+
+
+def bfs(x,y):
+    count = 0
+    queue = deque()
+    queue.append((x,y))
+    visited = [[True]*M for _ in range(N)]
+    while queue:
+        x,y = queue.popleft()
+
+        # 현재 위치에서 네 방향 확인
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            # 범위를 벗어날 경우 무시
+            if nx >= N or nx <= -1 or ny >=M or ny<= -1:
+                continue
+
+            # 해당 노드를 처음 방문 & 벽이 아닌 경우
+            elif graph[nx][ny] != 'X' and visited[nx][ny]:
+                queue.append((nx, ny))
+                visited[nx][ny] = False
+
+                if graph[nx][ny] == "P":
+                    count += 1
+    return(count)
+
+
+result = bfs(x,y)
+if result == 0:
+    result = "TT"
+print(result)
