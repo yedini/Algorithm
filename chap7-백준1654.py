@@ -1,7 +1,7 @@
 K, N = map(int, input().split())
 lens = [int(input()) for _ in range(K)]
 
-start = 0
+start = 1
 end = max(lens)
 
 while start <= end :
