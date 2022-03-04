@@ -2,11 +2,11 @@ n = int(input())
 nums = list(map(int, input().split()))
 nums.sort()
 
-result = 1
+target = 1
 
 for i in nums:
-    if result < i:
+    if target < i:
         break
-    result += i
+    target += i
 
-print(result)
+print(target)
