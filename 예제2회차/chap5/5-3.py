@@ -9,6 +9,7 @@ def dfs(x, y):
         return False
     
     # 아직 방문 안한 빈칸일경우: 방문으로 바꿔주고 다음 상하좌우 확인
+    # -> 연결된 위치에 있는 빈칸을 다 하나로 보도록 함!
     if graph[x][y] == 0:
         graph[x][y] = 1
         dfs(x+1, y)
@@ -16,7 +17,7 @@ def dfs(x, y):
         dfs(x, y+1)
         dfs(x, y-1)
 
-        return True
+        return True  # 얼음을 얼린 칸을 찾았으므로 true 출력
     return False
 
 # 묶음별로 count
