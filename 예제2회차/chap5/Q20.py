@@ -22,6 +22,7 @@ dy = [0, 0, -1, 1]
 
 cand = list(combinations(empty, 3))
 
+# 주어진 방향에서 선생님이 확인 가능한 공간이면 T로 바꾸는 함수
 def check(x, y, d):
     if x<0 or x>=n or y<0 or y>=n or temp[x][y] == 'O':
         return
@@ -40,6 +41,7 @@ for c in cand:
             check(t[0], t[1], d)
     nows = [] 
     for s in student:
+        # 학생 위치들을 확인해서 모두 그대로 S로 남아있는지 확인.
         nows.append(temp[s[0]][s[1]])
     if 'T' not in nows:
         result = 'YES'
