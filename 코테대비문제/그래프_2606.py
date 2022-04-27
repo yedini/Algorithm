@@ -13,7 +13,7 @@ visited = [1]
 q.append(1)
 count = 0
 while q:
-    d = q.popleft()
+    d = q.popleft()  # 꺼낸 컴퓨터와 연결된 컴퓨터를 모두 확인
     for next in graph[d]:
         if next not in visited:
             visited.append(next)
