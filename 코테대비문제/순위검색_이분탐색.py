@@ -20,7 +20,7 @@ def solution(info, query):
                 key = ''.join(temp)
                 dic[key].append(score)
     
-    # score가 높은 순으로 정렬
+    # score가 작은 순으로 정렬
     for value in dic.values():
         value.sort()
     
