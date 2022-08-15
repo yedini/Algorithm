@@ -1,4 +1,4 @@
-# (yellow가로*2)+(yellow세로*2) = brown
+# (yellow가로*2)+(yellow세로*2) + 4 = brown
 def solution(brown, yellow):
     answer = []
     
