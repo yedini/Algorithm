@@ -6,6 +6,6 @@ def solution(s):
         else:
             if len(stack) == 0:  # stack이 비어있는데 )가 나온 경우 -> 올바르지 않음
                 return False
-            else:  # stack에 (가 있고 다음으로 )가 온 상태 ->
+            else:  # stack에 (가 있고 다음으로 )가 온 상태 -> 괄호 한 쌍 찾음 -> stack에서 ( 꺼내기
                 stack.pop()
     return len(stack) == 0
