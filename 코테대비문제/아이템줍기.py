@@ -1,4 +1,5 @@
 from collections import deque
+
 def solution(rectangle, characterX, characterY, itemX, itemY):
     answer = 0
     # 테두리는 1, 나머지는 -1로 표시한 recs와 방문여부 및 거리를 나타내는 graph 생성
@@ -30,4 +31,5 @@ def solution(rectangle, characterX, characterY, itemX, itemY):
                 graph[nx][ny] = dist+1
                 q.append((nx, ny, dist+1))
 
+    # 두배 해줬으므로 2로 나눈 값이 정답
     return graph[itemX*2][itemY*2]//2
